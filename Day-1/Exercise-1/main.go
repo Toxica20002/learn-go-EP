@@ -1,3 +1,5 @@
+// Viết ham nhập 2 cạnh của hình chữ nhật, in ra diện tích, chu vi
+
 package main
 
 import "fmt"

@@ -1,3 +1,6 @@
+// Viết chương trình nhập một slice số, in ra tổng, số lớn nhất, số nhỏ nhất, trung bình cộng, slice đã được sắp xếp
+
+
 package main
 
 import "fmt"
@@ -38,6 +41,29 @@ func calculateAverage(slice []int) float64 {
 	return float64(sum) / float64(len(slice))
 }
 
+func quickSort(slice []int) []int {
+	if len(slice) < 2 {
+		return slice
+	}
+	left, right := 0, len(slice)-1
+	pivot := len(slice) / 2
+	slice[pivot], slice[right] = slice[right], slice[pivot]
+	for i := range slice {
+		if slice[i] < slice[right] {
+			slice[i], slice[left] = slice[left], slice[i]
+			left++
+		}
+	}
+	slice[left], slice[right] = slice[right], slice[left]
+	quickSort(slice[:left])
+	quickSort(slice[left+1:])
+	return slice
+}
+
+func sortAscending(slice []int) []int {
+	return quickSort(slice)
+}
+
 func main() {
 	var LengthOfSlice int
 	fmt.Print("Enter the length of the slice: ")
@@ -53,4 +79,5 @@ func main() {
 	fmt.Println("Min:", findMin(slice))
 	fmt.Println("Sum:", calculateSum(slice))
 	fmt.Println("Average:", calculateAverage(slice))
+	fmt.Println("Sorted Ascending:", sortAscending(slice))
 }

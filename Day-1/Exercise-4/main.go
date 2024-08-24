@@ -1,3 +1,5 @@
+// Viết chương trình nhập giải bài toán twosum : https://leetcode.com/problems/two-sum/
+
 package main
 
 import "fmt"
@@ -6,7 +8,7 @@ func twoSum(nums []int, target int) []int {
 	dict := make(map[int]int)
 	result := make([]int, 2)
 	for i, num := range nums {
-		if val, ok := dict[target - num]; ok {
+		if val, ok := dict[target-num]; ok {
 			result[0] = val
 			result[1] = i
 			break
